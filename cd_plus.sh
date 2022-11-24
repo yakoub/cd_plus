@@ -52,7 +52,7 @@ function cd_init {
   fi
   touch .cd_bookmarks
   entry=`pwd`
-  grep -qE "^${entry}$" ${cd_plus_d}/directory
+  \grep -qE "^${entry}$" ${cd_plus_d}/directory
   if [[ $? -ne 0 ]]; then
     echo $entry >> $cd_plus_d/directory
   fi
@@ -89,7 +89,7 @@ function cd_book {
   fi
 
   book=${book#$active}
-  grep -qE "^${book}$" ${active}/.cd_bookmarks
+  \grep -qE "^${book}$" ${active}/.cd_bookmarks
   if [[ $? -ne 0 ]]; then
     echo $book >> ${active}/.cd_bookmarks
     echo $book_name booked at $active
@@ -103,7 +103,7 @@ function cd_dir {
   local cd_plus_d=$CD_PLUS_DIRECTORY
   
   if [[ -n $2 ]]; then
-    matches=(`grep -E "${2}$" $cd_plus_d/directory`)
+    matches=(`\grep -E "${2}$" $cd_plus_d/directory`)
     if [[ ${#matches[@]} -gt 0 ]]; then
       cd ${matches[0]}
       return
@@ -135,7 +135,7 @@ function cd_jump {
     return
   fi
 
-  matches=(`grep -E "${book}$" ${active}/.cd_bookmarks`)
+  matches=(`\grep -E "${book}$" ${active}/.cd_bookmarks`)
   if [[ ${#matches[@]} -gt 0 ]]; then
     cd ${active}${matches[0]}
   else
