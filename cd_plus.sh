@@ -107,7 +107,8 @@ function cd_dir {
   local cd_plus_d=$CD_PLUS_DIRECTORY
   
   if [[ -n $2 ]]; then
-    matches=(`\grep -E "${2}$" $cd_plus_d/directory`)
+    pattern=$2
+    matches=(`\grep -E "${pattern}$" $cd_plus_d/directory`)
     if [[ ${#matches[@]} -gt 0 ]]; then
       cd ${matches[0]}
       return
