@@ -87,6 +87,10 @@ function cd_book {
     echo no active parent directory was found
     return
   fi
+  if [[ $book == $active ]]; then
+    echo not bookmarked, already at root
+    return
+  fi
 
   book=${book#$active}
   \grep -qE "^${book}$" ${active}/.cd_bookmarks
