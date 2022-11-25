@@ -2,7 +2,7 @@
 fast directory browsing using bookmarks .
 
 ## quick example
-
+(source cd_plus.sh to get function cd+)  
 ```bash
 cd /srv/company_x/drupal/
 # initialize
